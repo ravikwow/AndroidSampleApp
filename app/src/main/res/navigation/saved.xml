@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/saved"
+    app:startDestination="@id/savedScreen">
+    <fragment
+        android:id="@+id/savedScreen"
+        android:name="com.red.sampleapp.SavedFragment"
+        android:label="@string/title_saved"
+        tools:layout="@layout/fragment_saved">
+        <action
+            android:id="@+id/action_savedScreen_to_aboutScreenSaved"
+            app:destination="@id/aboutScreenSaved" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutScreenSaved"
+        android:name="com.red.sampleapp.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about" />
+</navigation>

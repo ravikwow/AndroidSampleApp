@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+def cfg = rootProject.ext
+def libs = rootProject.ext.libs
+
+android {
+    compileSdk cfg.targetSdkVersion
+
+    defaultConfig {
+        minSdk cfg.minSdkVersion
+        targetSdk cfg.targetSdkVersion
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility cfg.sourceCompatibility
+        targetCompatibility cfg.targetCompatibility
+    }
+    kotlinOptions {
+        jvmTarget = cfg.jvmTarget
+    }
+}
+
+dependencies {
+    implementation "androidx.core:core-ktx:$libs.corektx"
+    implementation "androidx.appcompat:appcompat:$libs.appcompat"
+    implementation "com.google.android.material:material:$libs.material"
+}
