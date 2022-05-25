@@ -32,7 +32,4 @@ android {
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:$libs.corektx"
-    implementation "androidx.appcompat:appcompat:$libs.appcompat"
-    implementation "com.google.android.material:material:$libs.material"
 }

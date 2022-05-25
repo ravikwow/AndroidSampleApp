@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 def cfg = rootProject.ext
@@ -14,6 +16,9 @@ android {
         targetSdk cfg.targetSdkVersion
 
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField 'String', 'API_BASE_URL', '"https://kinopoiskapiunofficial.tech/api/"'
+        buildConfigField 'String', 'X_API_KEY', '"219ea31b-9d60-417b-bd2d-44cf357f6d55"'
     }
 
     buildTypes {
@@ -32,7 +37,10 @@ android {
 }
 
 dependencies {
-    implementation "androidx.core:core-ktx:$libs.corektx"
-    implementation "androidx.appcompat:appcompat:$libs.appcompat"
-    implementation "com.google.android.material:material:$libs.material"
+    implementation project(':domain')
+    implementation "com.google.dagger:hilt-android:$libs.hilt"
+    kapt "com.google.dagger:hilt-compiler:$libs.hilt"
+    implementation "com.squareup.retrofit2:retrofit:$libs.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$libs.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$libs.okhttp_logging"
 }
