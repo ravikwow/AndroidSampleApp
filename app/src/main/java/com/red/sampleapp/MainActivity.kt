@@ -3,16 +3,19 @@ package com.red.sampleapp
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.red.base.ui.activity.ViewBindingActivity
 import com.red.sampleapp.databinding.ActivityMainBinding
+import com.red.sampleapp.feature.popular.OnPopularFragmentListener
+import com.red.sampleapp.feature.popular.PopularFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
+class MainActivity : ViewBindingActivity<ActivityMainBinding>(), OnPopularFragmentListener {
     lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -33,5 +36,9 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
+    }
+
+    override fun popularBtnClick(fragment: PopularFragment) {
+        findNavController(fragment).navigate(R.id.action_popularScreen_to_aboutScreenPopular)
     }
 }
