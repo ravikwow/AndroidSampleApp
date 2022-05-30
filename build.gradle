@@ -18,6 +18,7 @@ buildscript {
                 navigation      : '2.4.2',
                 retrofit        : '2.9.0',
                 okhttp_logging  : '4.9.3',
+                coroutine       : '1.6.1',
         ]
     }
     dependencies {

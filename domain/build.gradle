@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 def cfg = rootProject.ext
@@ -32,4 +34,8 @@ android {
 }
 
 dependencies {
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutine"
+    implementation "com.google.dagger:hilt-android:$libs.hilt"
+    kapt "com.google.dagger:hilt-compiler:$libs.hilt"
 }

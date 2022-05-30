@@ -43,4 +43,6 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$libs.retrofit"
     implementation "com.squareup.retrofit2:converter-gson:$libs.retrofit"
     implementation "com.squareup.okhttp3:logging-interceptor:$libs.okhttp_logging"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutine"
 }
