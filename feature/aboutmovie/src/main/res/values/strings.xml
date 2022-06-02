@@ -1,3 +1,4 @@
 <resources>
     <string name="title_about">О фильме</string>
+    <string name="empty_arguments">Empty arguments</string>
 </resources>

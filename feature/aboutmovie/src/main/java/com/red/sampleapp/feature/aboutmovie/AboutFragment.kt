@@ -8,10 +8,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AboutFragment : ViewBindingFragment<FragmentAboutBinding>() {
-    private lateinit var movieAboutUI: MovieAboutUI
+    private var movieAboutUI: MovieAboutUI? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieAboutUI = arguments?.getParcelable("movie")!!
-        binding.tvMovieName.text = movieAboutUI.name
+        movieAboutUI = arguments?.getParcelable("movie")
+        binding.tvMovieName.text = movieAboutUI?.name ?: getString(R.string.empty_arguments)
     }
 }
