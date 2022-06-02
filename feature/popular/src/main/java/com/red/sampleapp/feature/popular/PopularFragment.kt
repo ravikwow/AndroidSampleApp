@@ -44,7 +44,7 @@ class PopularFragment : ViewBindingFragment<FragmentPopularBinding>() {
         try {
             parentCallback = context as OnPopularFragmentListener
         } catch (e: ClassCastException) {
-            throw ClassCastException("$context must implement OnHeadlineSelectedListener")
+            throw ClassCastException("$context must implement OnPopularFragmentListener")
         }
     }
 }

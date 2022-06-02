@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">SampleApp</string>
-    <string name="title_random">Случайный</string>
     <string name="title_saved">Сохраненые</string>
 </resources>

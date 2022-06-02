@@ -6,7 +6,7 @@
     app:startDestination="@id/randomScreen">
     <fragment
         android:id="@+id/randomScreen"
-        android:name="com.red.sampleapp.RandomFragment"
+        android:name="com.red.sampleapp.feature.random.RandomFragment"
         android:label="@string/title_random"
         tools:layout="@layout/fragment_random">
         <action
