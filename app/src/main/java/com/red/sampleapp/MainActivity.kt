@@ -14,10 +14,13 @@ import com.red.sampleapp.feature.popular.OnPopularFragmentListener
 import com.red.sampleapp.feature.popular.PopularFragment
 import com.red.sampleapp.feature.random.OnRandomFragmentListener
 import com.red.sampleapp.feature.random.RandomFragment
+import com.red.sampleapp.feature.saved.OnSavedFragmentListener
+import com.red.sampleapp.feature.saved.SavedFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ViewBindingActivity<ActivityMainBinding>(), OnPopularFragmentListener, OnRandomFragmentListener {
+class MainActivity : ViewBindingActivity<ActivityMainBinding>(), OnPopularFragmentListener,
+    OnRandomFragmentListener, OnSavedFragmentListener {
     lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
@@ -46,5 +49,9 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(), OnPopularFragme
 
     override fun randomBtnClick(fragment: RandomFragment) {
         findNavController(fragment).navigate(R.id.action_randomScreenm_to_aboutScreenRandom)
+    }
+
+    override fun savedBtnClick(fragment: SavedFragment) {
+        findNavController(fragment).navigate(R.id.action_savedScreen_to_aboutScreenSaved)
     }
 }

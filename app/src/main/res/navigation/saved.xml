@@ -6,7 +6,7 @@
     app:startDestination="@id/savedScreen">
     <fragment
         android:id="@+id/savedScreen"
-        android:name="com.red.sampleapp.SavedFragment"
+        android:name="com.red.sampleapp.feature.saved.SavedFragment"
         android:label="@string/title_saved"
         tools:layout="@layout/fragment_saved">
         <action
