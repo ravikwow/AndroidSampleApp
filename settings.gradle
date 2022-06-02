@@ -14,8 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "SampleApp"
 include ':app'
-include ':repository'
-include ':domain'
 include ':base:ui:fragment'
 include ':base:ui:activity'
+include ':domain'
 include ':feature:popular'
+include ':repository:common'
+include ':repository:popular'

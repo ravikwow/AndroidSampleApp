@@ -1,3 +1,4 @@
 <resources>
     <string name="title_popular">Популярные</string>
+    <string name="empty">empty</string>
 </resources>

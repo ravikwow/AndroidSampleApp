@@ -34,6 +34,8 @@ android {
 }
 
 dependencies {
+    implementation project(':domain')
+    implementation project(':repository:common')
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutine"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutine"
     implementation "com.google.dagger:hilt-android:$libs.hilt"

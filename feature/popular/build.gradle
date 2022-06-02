@@ -39,7 +39,7 @@ android {
 dependencies {
     implementation project(':base:ui:fragment')
     implementation project(':domain')
-    implementation project(':repository')
+    implementation project(':repository:popular')
     implementation "androidx.core:core-ktx:$libs.corektx"
     implementation "androidx.appcompat:appcompat:$libs.appcompat"
     implementation "com.google.android.material:material:$libs.material"
@@ -48,4 +48,5 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$libs.navigation"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutine"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutine"
+    implementation "androidx.paging:paging-runtime:3.1.1"
 }

@@ -16,6 +16,9 @@ android {
         targetSdk cfg.targetSdkVersion
 
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField 'String', 'API_BASE_URL', '"https://kinopoiskapiunofficial.tech/api/"'
+        buildConfigField 'String', 'X_API_KEY', '"219ea31b-9d60-417b-bd2d-44cf357f6d55"'
     }
 
     buildTypes {
@@ -34,9 +37,11 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutine"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutine"
     implementation "com.google.dagger:hilt-android:$libs.hilt"
     kapt "com.google.dagger:hilt-compiler:$libs.hilt"
-    implementation "androidx.paging:paging-runtime:3.1.1"
+    implementation "com.squareup.retrofit2:retrofit:$libs.retrofit"
+    implementation "com.squareup.retrofit2:converter-gson:$libs.retrofit"
+    implementation "com.squareup.okhttp3:logging-interceptor:$libs.okhttp_logging"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutine"
 }
