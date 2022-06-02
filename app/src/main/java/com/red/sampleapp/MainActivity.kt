@@ -10,8 +10,11 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.red.base.ui.activity.ViewBindingActivity
 import com.red.sampleapp.databinding.ActivityMainBinding
+import com.red.sampleapp.feature.aboutmovie.MovieAboutUI
 import com.red.sampleapp.feature.popular.OnPopularFragmentListener
 import com.red.sampleapp.feature.popular.PopularFragment
+import com.red.sampleapp.feature.popular.PopularFragmentDirections
+import com.red.sampleapp.feature.popular.models.MovieUI
 import com.red.sampleapp.feature.random.OnRandomFragmentListener
 import com.red.sampleapp.feature.random.RandomFragment
 import com.red.sampleapp.feature.saved.OnSavedFragmentListener
@@ -43,8 +46,14 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(), OnPopularFragme
         return navController.navigateUp(appBarConfiguration)
     }
 
-    override fun popularBtnClick(fragment: PopularFragment) {
-        findNavController(fragment).navigate(R.id.action_popularScreen_to_aboutScreenPopular)
+    override fun popularMovieClick(fragment: PopularFragment, movieUI: MovieUI) {
+        val action = PopularFragmentDirections.actionPopularScreenToAboutScreenPopular(
+            MovieAboutUI(
+                movieUI.id,
+                movieUI.name
+            )
+        )
+        findNavController(fragment).navigate(action)
     }
 
     override fun randomBtnClick(fragment: RandomFragment) {

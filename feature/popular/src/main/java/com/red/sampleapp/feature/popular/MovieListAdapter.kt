@@ -7,15 +7,27 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.red.sampleapp.feature.popular.databinding.ItemPopularBinding
 import com.red.sampleapp.feature.popular.models.MovieUI
+import dagger.hilt.android.scopes.FragmentScoped
+import javax.inject.Inject
 
-class MovieListAdapter : PagingDataAdapter<MovieUI, MovieViewHolder>(MovieDiffCallBack()) {
+@FragmentScoped
+class MovieListAdapter @Inject constructor(
+    val onMovieClickListener: (movieUI: MovieUI) -> Unit
+) :
+    PagingDataAdapter<MovieUI, MovieViewHolder>(MovieDiffCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        return MovieViewHolder(
+        val holder = MovieViewHolder(
             ItemPopularBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
             )
         )
+        holder.binding.root.setOnClickListener {
+            getItem(holder.bindingAdapterPosition)?.let { movieUI ->
+                onMovieClickListener.invoke(movieUI)
+            }
+        }
+        return holder
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
@@ -34,12 +46,12 @@ class MovieDiffCallBack : DiffUtil.ItemCallback<MovieUI>() {
 }
 
 class MovieViewHolder(
-    private val binding: ItemPopularBinding
+    val binding: ItemPopularBinding
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(name: String?) {
         name?.let {
             binding.tvText.text = name
-        }?:run {
+        } ?: run {
             binding.tvText.text = binding.tvText.context.getString(R.string.empty)
         }
     }

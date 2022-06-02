@@ -11,11 +11,19 @@
         tools:layout="@layout/fragment_popular">
         <action
             android:id="@+id/action_popularScreen_to_aboutScreenPopular"
-            app:destination="@id/aboutScreenPopular" />
+            app:destination="@id/aboutScreenPopular"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/aboutScreenPopular"
         android:name="com.red.sampleapp.feature.aboutmovie.AboutFragment"
         android:label="@string/title_about"
-        tools:layout="@layout/fragment_about" />
+        tools:layout="@layout/fragment_about">
+        <argument
+            android:name="movie"
+            app:argType="com.red.sampleapp.feature.aboutmovie.MovieAboutUI" />
+    </fragment>
 </navigation>
