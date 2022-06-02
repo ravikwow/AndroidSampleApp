@@ -21,7 +21,6 @@ class PopularFragment : ViewBindingFragment<FragmentPopularBinding>() {
         super.onViewCreated(view, savedInstanceState)
         binding.btn.setOnClickListener {
             parentCallback.popularBtnClick(this)
-            //findNavController().navigate(R.id.action_popularScreen_to_aboutScreenPopular)
         }
         initView()
         collectUiState()

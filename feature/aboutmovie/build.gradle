@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'dagger.hilt.android.plugin'
     id 'kotlin-kapt'
@@ -12,11 +12,10 @@ android {
     compileSdk cfg.targetSdkVersion
 
     defaultConfig {
-        applicationId cfg.applicationId
         minSdk cfg.minSdkVersion
         targetSdk cfg.targetSdkVersion
-        versionCode cfg.versionCode
-        versionName cfg.versionName
+
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -38,17 +37,14 @@ android {
 }
 
 dependencies {
-    implementation project(':base:ui:activity')
     implementation project(':base:ui:fragment')
-    implementation project(':feature:aboutmovie')
-    implementation project(':feature:popular')
+    implementation project(':repository:popular')
     implementation "androidx.core:core-ktx:$libs.corektx"
     implementation "androidx.appcompat:appcompat:$libs.appcompat"
     implementation "com.google.android.material:material:$libs.material"
-    implementation "androidx.constraintlayout:constraintlayout:$libs.constraintlayout"
     implementation "com.google.dagger:hilt-android:$libs.hilt"
     kapt "com.google.dagger:hilt-compiler:$libs.hilt"
-    implementation "androidx.navigation:navigation-runtime-ktx:$libs.navigation"
     implementation "androidx.navigation:navigation-fragment-ktx:$libs.navigation"
-    implementation "androidx.navigation:navigation-ui-ktx:$libs.navigation"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutine"
 }

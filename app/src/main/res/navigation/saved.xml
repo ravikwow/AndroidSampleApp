@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/aboutScreenSaved"
-        android:name="com.red.sampleapp.AboutFragment"
+        android:name="com.red.sampleapp.feature.aboutmovie.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about" />
 </navigation>
