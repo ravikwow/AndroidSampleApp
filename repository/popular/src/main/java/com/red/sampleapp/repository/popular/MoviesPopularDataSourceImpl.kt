@@ -5,19 +5,17 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.red.sampleapp.domain.models.MovieModel
 import com.red.sampleapp.repository.common.FilmsApi
-import com.red.sampleapp.repository.common.repository.MoviesPopularDataSource
+import com.red.sampleapp.repository.common.repository.MoviesPopularRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-const val NETWORK_PAGE_SIZE = 20
-
-class MoviesRemoteDataSourceImpl @Inject constructor(
+class MoviesPopularDataSourceImpl @Inject constructor(
     private val filmsApi: FilmsApi
-) : MoviesPopularDataSource {
+) : MoviesPopularRepository {
     override fun getMovies(): Flow<PagingData<MovieModel>> {
         return Pager(
             config = PagingConfig(
-                pageSize = NETWORK_PAGE_SIZE,
+                pageSize = MoviesPagingSource.NETWORK_PAGE_SIZE,
                 enablePlaceholders = false
             ),
             pagingSourceFactory = {

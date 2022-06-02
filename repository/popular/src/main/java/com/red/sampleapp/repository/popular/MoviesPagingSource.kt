@@ -9,16 +9,18 @@ import com.red.sampleapp.repository.common.dto.Film
 import com.red.sampleapp.repository.common.dto.FilmsResponse
 import java.util.*
 
-private const val TMDB_STARTING_PAGE_INDEX = 1
-
 class MoviesPagingSource(
     private val filmsApi: FilmsApi
 ) : PagingSource<Int, MovieModel>() {
+
+    companion object {
+        private const val STARTING_PAGE_INDEX = 1
+        const val NETWORK_PAGE_SIZE = 20
+    }
+
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, MovieModel> {
-        val pageIndex = params.key ?: TMDB_STARTING_PAGE_INDEX
+        val pageIndex = params.key ?: STARTING_PAGE_INDEX
         return try {
-            // By default, initial load size = 3 * NETWORK PAGE SIZE
-            // ensure we're not requesting duplicating items at the 2nd request
             val pageCount = params.loadSize / NETWORK_PAGE_SIZE
             val response = if (pageCount > 1) {
                 var maxCount = 0
@@ -45,7 +47,7 @@ class MoviesPagingSource(
                 }
             LoadResult.Page(
                 data = movies,
-                prevKey = if (pageIndex == TMDB_STARTING_PAGE_INDEX) null else pageIndex,
+                prevKey = if (pageIndex == STARTING_PAGE_INDEX) null else pageIndex,
                 nextKey = nextKey
             )
         } catch (throwable: Throwable) {

@@ -4,6 +4,6 @@ import androidx.paging.PagingData
 import com.red.sampleapp.domain.models.MovieModel
 import kotlinx.coroutines.flow.Flow
 
-interface MoviesPopularDataSource {
+interface MoviesPopularRepository {
     fun getMovies(): Flow<PagingData<MovieModel>>
 }

@@ -1,21 +1,16 @@
 package com.red.sampleapp.repository.popular.di
 
-import com.red.sampleapp.repository.common.FilmsApi
 import com.red.sampleapp.repository.common.di.FilmsModule
-import com.red.sampleapp.repository.common.repository.MoviesPopularDataSource
-import com.red.sampleapp.repository.popular.MoviesRemoteDataSourceImpl
+import com.red.sampleapp.repository.common.repository.MoviesPopularRepository
+import com.red.sampleapp.repository.popular.MoviesPopularDataSourceImpl
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Singleton
 
 @Module(includes = [FilmsModule::class])
 @InstallIn(SingletonComponent::class)
-class MoviesPagingModule {
-    @Singleton
-    @Provides
-    fun provideMoviesRemoteDataSource(filmsApi: FilmsApi): MoviesPopularDataSource {
-        return MoviesRemoteDataSourceImpl(filmsApi)
-    }
+abstract class MoviesPagingModule {
+    @Binds
+    abstract fun bindMoviesPopularDataSource(MoviesPopularDataSourceImpl: MoviesPopularDataSourceImpl): MoviesPopularRepository
 }

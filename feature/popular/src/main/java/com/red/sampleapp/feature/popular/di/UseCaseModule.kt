@@ -1,7 +1,7 @@
 package com.red.sampleapp.feature.popular.di
 
 import com.red.sampleapp.domain.usecase.PopularMoviesUseCase
-import com.red.sampleapp.repository.common.repository.MoviesPopularDataSource
+import com.red.sampleapp.repository.common.repository.MoviesPopularRepository
 import com.red.sampleapp.repository.popular.di.MoviesPagingModule
 import dagger.Module
 import dagger.Provides
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 class UseCaseModule {
     @Singleton
     @Provides
-    fun providePopularUseCase(moviesPopularDataSource: MoviesPopularDataSource): PopularMoviesUseCase {
-        return PopularMoviesUseCase(moviesPopularDataSource)
+    fun providePopularUseCase(moviesPopularRepository: MoviesPopularRepository): PopularMoviesUseCase {
+        return PopularMoviesUseCase(moviesPopularRepository)
     }
 }
