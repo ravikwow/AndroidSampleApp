@@ -17,8 +17,10 @@ import com.red.sampleapp.feature.popular.PopularFragmentDirections
 import com.red.sampleapp.feature.popular.models.MovieUI
 import com.red.sampleapp.feature.random.OnRandomFragmentListener
 import com.red.sampleapp.feature.random.RandomFragment
+import com.red.sampleapp.feature.random.RandomFragmentDirections
 import com.red.sampleapp.feature.saved.OnSavedFragmentListener
 import com.red.sampleapp.feature.saved.SavedFragment
+import com.red.sampleapp.feature.saved.SavedFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -57,10 +59,22 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(), OnPopularFragme
     }
 
     override fun randomBtnClick(fragment: RandomFragment) {
-        findNavController(fragment).navigate(R.id.action_randomScreenm_to_aboutScreenRandom)
+        val action = RandomFragmentDirections.actionRandomScreenmToAboutScreenRandom(
+            MovieAboutUI(
+                -1,
+                getString(com.red.sampleapp.feature.random.R.string.title_random)
+            )
+        )
+        findNavController(fragment).navigate(action)
     }
 
     override fun savedBtnClick(fragment: SavedFragment) {
-        findNavController(fragment).navigate(R.id.action_savedScreen_to_aboutScreenSaved)
+        val action = SavedFragmentDirections.actionSavedScreenToAboutScreenSaved(
+            MovieAboutUI(
+                -1,
+                getString(com.red.sampleapp.feature.saved.R.string.title_saved)
+            )
+        )
+        findNavController(fragment).navigate(action)
     }
 }

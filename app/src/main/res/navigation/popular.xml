@@ -24,6 +24,7 @@
         tools:layout="@layout/fragment_about">
         <argument
             android:name="movie"
-            app:argType="com.red.sampleapp.feature.aboutmovie.MovieAboutUI" />
+            app:argType="com.red.sampleapp.feature.aboutmovie.MovieAboutUI"
+            app:nullable="false" />
     </fragment>
 </navigation>

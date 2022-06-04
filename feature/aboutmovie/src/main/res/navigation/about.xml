@@ -2,19 +2,10 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/saved"
-    app:startDestination="@id/savedScreen">
+    android:id="@+id/about"
+    app:startDestination="@id/aboutScreen">
     <fragment
-        android:id="@+id/savedScreen"
-        android:name="com.red.sampleapp.feature.saved.SavedFragment"
-        android:label="@string/title_saved"
-        tools:layout="@layout/fragment_saved">
-        <action
-            android:id="@+id/action_savedScreen_to_aboutScreenSaved"
-            app:destination="@id/aboutScreenSaved" />
-    </fragment>
-    <fragment
-        android:id="@+id/aboutScreenSaved"
+        android:id="@+id/aboutScreen"
         android:name="com.red.sampleapp.feature.aboutmovie.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about">

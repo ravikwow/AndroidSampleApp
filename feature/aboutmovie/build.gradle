@@ -45,6 +45,7 @@ dependencies {
     implementation "com.google.android.material:material:$libs.material"
     implementation "com.google.dagger:hilt-android:$libs.hilt"
     kapt "com.google.dagger:hilt-compiler:$libs.hilt"
+    implementation "androidx.navigation:navigation-fragment-ktx:$libs.navigation"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutine"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutine"
 }
