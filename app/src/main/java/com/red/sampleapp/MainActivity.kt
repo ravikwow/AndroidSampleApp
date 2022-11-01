@@ -26,7 +26,11 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
         binding.bottomNav.setupWithNavController(navController)
 
         appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.randomScreen, R.id.popularScreen, R.id.savedScreen)
+            setOf(
+                com.red.sampleapp.feature.random.R.id.randomScreen,
+                com.red.sampleapp.feature.popular.R.id.popularScreen,
+                com.red.sampleapp.feature.saved.R.id.savedScreen
+            )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
