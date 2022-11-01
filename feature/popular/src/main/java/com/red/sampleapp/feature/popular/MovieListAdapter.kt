@@ -50,7 +50,7 @@ class MovieViewHolder(
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(name: String?) {
         name?.let {
-            binding.tvText.text = name
+            binding.tvText.text = it
         } ?: run {
             binding.tvText.text = binding.tvText.context.getString(R.string.empty)
         }
