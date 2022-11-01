@@ -8,12 +8,5 @@
         android:id="@+id/popularScreen"
         android:name="com.red.sampleapp.feature.popular.PopularFragment"
         android:label="@string/title_popular"
-        tools:layout="@layout/fragment_popular">
-        <action
-            android:id="@+id/action_popularScreen_to_aboutScreenPopular"
-            app:enterAnim="@android:anim/fade_in"
-            app:exitAnim="@android:anim/fade_out"
-            app:popEnterAnim="@android:anim/fade_in"
-            app:popExitAnim="@android:anim/fade_out" />
-    </fragment>
+        tools:layout="@layout/fragment_popular" />
 </navigation>
