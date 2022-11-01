@@ -3,22 +3,17 @@ package com.red.sampleapp
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.red.base.ui.activity.ViewBindingActivity
 import com.red.sampleapp.databinding.ActivityMainBinding
-import com.red.sampleapp.feature.aboutmovie.MovieAboutUI
-import com.red.sampleapp.feature.saved.OnSavedFragmentListener
-import com.red.sampleapp.feature.saved.SavedFragment
-import com.red.sampleapp.feature.saved.SavedFragmentDirections
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ViewBindingActivity<ActivityMainBinding>(), OnSavedFragmentListener {
-    lateinit var navController: NavController
+class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
+    private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,15 +33,5 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>(), OnSavedFragment
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
-    }
-
-    override fun savedBtnClick(fragment: SavedFragment) {
-        val action = SavedFragmentDirections.actionSavedScreenToAboutScreenSaved(
-            MovieAboutUI(
-                -1,
-                getString(com.red.sampleapp.feature.saved.R.string.title_saved)
-            )
-        )
-        findNavController(fragment).navigate(action)
     }
 }

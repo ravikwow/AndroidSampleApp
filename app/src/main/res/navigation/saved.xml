@@ -8,19 +8,5 @@
         android:id="@+id/savedScreen"
         android:name="com.red.sampleapp.feature.saved.SavedFragment"
         android:label="@string/title_saved"
-        tools:layout="@layout/fragment_saved">
-        <action
-            android:id="@+id/action_savedScreen_to_aboutScreenSaved"
-            app:destination="@id/aboutScreenSaved" />
-    </fragment>
-    <fragment
-        android:id="@+id/aboutScreenSaved"
-        android:name="com.red.sampleapp.feature.aboutmovie.AboutFragment"
-        android:label="@string/title_about"
-        tools:layout="@layout/fragment_about">
-        <argument
-            android:name="movie"
-            app:argType="com.red.sampleapp.feature.aboutmovie.MovieAboutUI"
-            app:nullable="false" />
-    </fragment>
+        tools:layout="@layout/fragment_saved" />
 </navigation>
