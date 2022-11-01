@@ -8,19 +8,5 @@
         android:id="@+id/randomScreen"
         android:name="com.red.sampleapp.feature.random.RandomFragment"
         android:label="@string/title_random"
-        tools:layout="@layout/fragment_random">
-        <action
-            android:id="@+id/action_randomScreenm_to_aboutScreenRandom"
-            app:destination="@id/aboutScreenRandom" />
-    </fragment>
-    <fragment
-        android:id="@+id/aboutScreenRandom"
-        android:name="com.red.sampleapp.feature.aboutmovie.AboutFragment"
-        android:label="@string/title_about"
-        tools:layout="@layout/fragment_about">
-        <argument
-            android:name="movie"
-            app:argType="com.red.sampleapp.feature.aboutmovie.MovieAboutUI"
-            app:nullable="false" />
-    </fragment>
+        tools:layout="@layout/fragment_random" />
 </navigation>
