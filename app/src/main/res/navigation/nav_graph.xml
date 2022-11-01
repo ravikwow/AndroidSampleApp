@@ -7,4 +7,5 @@
     <include app:graph="@navigation/random" />
     <include app:graph="@navigation/popular" />
     <include app:graph="@navigation/saved" />
+    <include app:graph="@navigation/about" />
 </navigation>

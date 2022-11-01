@@ -9,9 +9,12 @@
         android:name="com.red.sampleapp.feature.aboutmovie.AboutFragment"
         android:label="@string/title_about"
         tools:layout="@layout/fragment_about">
+        <deepLink app:uri="android-app://com.red.sampleapp/aboutmovie/{id}/?name={name}" />
         <argument
-            android:name="movie"
-            app:argType="com.red.sampleapp.feature.aboutmovie.MovieAboutUI"
-            app:nullable="false" />
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 </navigation>

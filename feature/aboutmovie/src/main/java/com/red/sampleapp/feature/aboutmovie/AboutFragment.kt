@@ -9,11 +9,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AboutFragment : ViewBindingFragment<FragmentAboutBinding>() {
-    private var movieAboutUI: MovieAboutUI? = null
     private val args: AboutFragmentArgs by navArgs()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        movieAboutUI = args.movie
-        binding.tvMovieName.text = movieAboutUI?.name ?: getString(R.string.empty_arguments)
+        //binding.tvMovieName.text = args.name ?: getString(R.string.empty_arguments)
+        binding.tvMovieName.text = args.name
+        val id = args.id
     }
 }

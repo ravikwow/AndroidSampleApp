@@ -1,10 +1,12 @@
 package com.red.sampleapp.feature.popular
 
-import android.content.Context
 import android.os.Bundle
 import android.view.View
+import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDeepLinkRequest
+import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 import com.red.base.ui.fragment.ViewBindingFragment
 import com.red.sampleapp.feature.popular.databinding.FragmentPopularBinding
 import com.red.sampleapp.feature.popular.models.MovieUI
@@ -15,11 +17,13 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class PopularFragment : ViewBindingFragment<FragmentPopularBinding>() {
     private val viewModel by viewModels<PopularVM>()
-    private lateinit var parentCallback: OnPopularFragmentListener
     private val onMovieClickListener: (movieUI: MovieUI) -> Unit = { movieUI ->
-        parentCallback.popularMovieClick(this, movieUI)
+        val request = NavDeepLinkRequest.Builder
+            .fromUri("android-app://com.red.sampleapp/aboutmovie/-1/?name=${movieUI.name}".toUri())
+            .build()
+        findNavController(this).navigate(request)
     }
-    val adapter = MovieListAdapter(onMovieClickListener)
+    private val adapter = MovieListAdapter(onMovieClickListener)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,17 +42,4 @@ class PopularFragment : ViewBindingFragment<FragmentPopularBinding>() {
             }
         }
     }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        try {
-            parentCallback = context as OnPopularFragmentListener
-        } catch (e: ClassCastException) {
-            throw ClassCastException("$context must implement OnPopularFragmentListener")
-        }
-    }
-}
-
-interface OnPopularFragmentListener {
-    fun popularMovieClick(fragment: PopularFragment, movieUI: MovieUI)
 }
