@@ -2,7 +2,9 @@ package com.red.sampleapp.feature.random
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.core.net.toUri
+import androidx.fragment.app.setFragmentResultListener
 import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
@@ -13,6 +15,11 @@ class RandomFragment : ViewBindingFragment<FragmentRandomBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.btn.setOnClickListener {
+            setFragmentResultListener("AboutFragment") { key, bundle ->
+                val id = bundle.getInt("id")
+                val name = bundle.getString("name")
+                Toast.makeText(context, "id: $id, name: $name", Toast.LENGTH_SHORT).show()
+            }
             val id = -1
             val name = getString(R.string.title_random)
             val request = NavDeepLinkRequest.Builder

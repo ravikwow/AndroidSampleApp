@@ -1,4 +1,5 @@
 <resources>
     <string name="title_about">О фильме</string>
     <string name="empty_arguments">Empty arguments</string>
+    <string name="return_result">Вернуть результат</string>
 </resources>
