@@ -8,5 +8,7 @@
         android:id="@+id/randomScreen"
         android:name="com.red.sampleapp.feature.random.RandomFragment"
         android:label="@string/title_random"
-        tools:layout="@layout/fragment_random" />
+        tools:layout="@layout/fragment_random">
+        <deepLink app:uri="android-app://com.red.sampleapp/random" />
+    </fragment>
 </navigation>
