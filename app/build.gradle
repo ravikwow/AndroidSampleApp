@@ -46,6 +46,7 @@ dependencies {
     implementation project(':feature:random')
     implementation project(':feature:saved')
     implementation project(':feature:auth')
+    implementation project(':repository:common')
     implementation "androidx.core:core-ktx:$libs.corektx"
     implementation "androidx.appcompat:appcompat:$libs.appcompat"
     implementation "com.google.android.material:material:$libs.material"

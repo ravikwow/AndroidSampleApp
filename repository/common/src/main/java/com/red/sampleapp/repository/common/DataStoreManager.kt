@@ -1,6 +1,7 @@
 package com.red.sampleapp.repository.common
 
 import android.content.Context
+import android.text.TextUtils
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -66,5 +67,9 @@ class DataStoreManager @Inject constructor(@ApplicationContext appContext: Conte
         return runBlocking {
             dataStore.getFromLocalStorage(stringPreferencesKey("apiKey")).first() ?: ""
         }
+    }
+
+    fun checkApiKey(): Boolean {
+        return !TextUtils.isEmpty(getApiKey())
     }
 }

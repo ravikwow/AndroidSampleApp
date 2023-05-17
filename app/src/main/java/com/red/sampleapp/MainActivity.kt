@@ -10,13 +10,17 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.red.base.ui.activity.ViewBindingActivity
 import com.red.sampleapp.databinding.ActivityMainBinding
+import com.red.sampleapp.repository.common.DataStoreManager
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
+    @Inject
+    lateinit var dataStoreManager: DataStoreManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -26,7 +30,11 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
 
         val inflater = navHostFragment.navController.navInflater
         val graph = inflater.inflate(R.navigation.nav_graph)
-        graph.setStartDestination(com.red.sampleapp.auth.R.id.auth)
+        if (dataStoreManager.checkApiKey()) {
+            graph.setStartDestination(com.red.sampleapp.feature.random.R.id.random)
+        } else {
+            graph.setStartDestination(com.red.sampleapp.auth.R.id.auth)
+        }
         navController.setGraph(graph, null)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
