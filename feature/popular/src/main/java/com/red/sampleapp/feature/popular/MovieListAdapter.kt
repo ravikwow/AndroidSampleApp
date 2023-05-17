@@ -12,7 +12,7 @@ import javax.inject.Inject
 
 @FragmentScoped
 class MovieListAdapter @Inject constructor(
-    val onMovieClickListener: (movieUI: MovieUI) -> Unit
+    private val onMovieClickListener: (movieUI: MovieUI) -> Unit
 ) :
     PagingDataAdapter<MovieUI, MovieViewHolder>(MovieDiffCallBack()) {
 

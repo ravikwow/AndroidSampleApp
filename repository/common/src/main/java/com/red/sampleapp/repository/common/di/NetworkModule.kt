@@ -2,6 +2,7 @@ package com.red.sampleapp.repository.common.di
 
 import com.red.sampleapp.repository.common.ApiKeyInterceptor
 import com.red.sampleapp.repository.common.BuildConfig
+import com.red.sampleapp.repository.common.DataStoreManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -50,7 +51,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiKeyInterceptor(): ApiKeyInterceptor {
-        return ApiKeyInterceptor()
+    fun provideApiKeyInterceptor(dataStoreManager: DataStoreManager): ApiKeyInterceptor {
+        return ApiKeyInterceptor(dataStoreManager)
     }
 }

@@ -1,0 +1,4 @@
+<resources>
+    <string name="enter_api_key">Enter api key</string>
+    <string name="title_auth">Авторизация</string>
+</resources>

@@ -1,4 +1,4 @@
-package com.red.sampleapp.repository.common.repository
+package com.red.sampleapp.domain.repository
 
 import androidx.paging.PagingData
 import com.red.sampleapp.domain.models.MovieModel

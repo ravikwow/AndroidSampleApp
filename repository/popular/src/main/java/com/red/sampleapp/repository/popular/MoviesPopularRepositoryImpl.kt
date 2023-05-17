@@ -5,11 +5,11 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.red.sampleapp.domain.models.MovieModel
 import com.red.sampleapp.repository.common.FilmsApi
-import com.red.sampleapp.repository.common.repository.MoviesPopularRepository
+import com.red.sampleapp.domain.repository.MoviesPopularRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class MoviesPopularDataSourceImpl @Inject constructor(
+class MoviesPopularRepositoryImpl @Inject constructor(
     private val filmsApi: FilmsApi
 ) : MoviesPopularRepository {
     override fun getMovies(): Flow<PagingData<MovieModel>> {

@@ -17,7 +17,7 @@ class PopularVM @Inject constructor(
     private val popularMoviesUseCase: PopularMoviesUseCase,
 ) : ViewModel() {
 
-    suspend fun getMovies(): Flow<PagingData<MovieUI>> {
+    fun getMovies(): Flow<PagingData<MovieUI>> {
         return popularMoviesUseCase.execute()
             .map { pagingDataMovieModel ->
                 pagingDataMovieModel.map { movieModel ->
