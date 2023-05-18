@@ -11,7 +11,7 @@ class ApiKeyInterceptor(private val dataStoreManager: DataStoreManager) : Interc
         return if (TextUtils.isEmpty(original.header("X-API-Key"))) {
             val apiKey = dataStoreManager.getApiKey()
             if (TextUtils.isEmpty(apiKey)) {
-                throw java.lang.Exception("Please login")
+                chain.proceed(original)
             } else {
                 val request = original.newBuilder()
                     .headers(original.headers)
