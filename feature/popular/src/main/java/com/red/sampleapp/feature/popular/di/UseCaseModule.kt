@@ -2,7 +2,7 @@ package com.red.sampleapp.feature.popular.di
 
 import com.red.sampleapp.domain.usecase.PopularMoviesUseCase
 import com.red.sampleapp.domain.repository.MoviesPopularRepository
-import com.red.sampleapp.repository.popular.di.MoviesPagingModule
+import com.red.sampleapp.feature.popular.repository.di.MoviesPagingModule
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

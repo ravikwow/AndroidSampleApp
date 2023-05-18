@@ -1,4 +1,4 @@
-package com.red.sampleapp.repository.popular
+package com.red.sampleapp.feature.popular.repository
 
 import android.util.Log
 import androidx.paging.PagingSource

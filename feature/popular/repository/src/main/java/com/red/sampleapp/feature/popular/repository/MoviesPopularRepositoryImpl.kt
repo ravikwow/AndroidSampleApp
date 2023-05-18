@@ -1,4 +1,4 @@
-package com.red.sampleapp.repository.popular
+package com.red.sampleapp.feature.popular.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig

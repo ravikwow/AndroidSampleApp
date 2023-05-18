@@ -39,7 +39,7 @@ android {
 
 dependencies {
     implementation project(':base:ui:fragment')
-    implementation project(':repository:popular')
+    implementation project(':feature:popular:repository')
     implementation "androidx.core:core-ktx:$libs.corektx"
     implementation "androidx.appcompat:appcompat:$libs.appcompat"
     implementation "com.google.android.material:material:$libs.material"
