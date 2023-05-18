@@ -1,8 +1,12 @@
 package com.red.sampleapp
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import androidx.core.net.toUri
 import androidx.navigation.NavController
+import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -12,6 +16,9 @@ import com.red.base.ui.activity.ViewBindingActivity
 import com.red.sampleapp.databinding.ActivityMainBinding
 import com.red.sampleapp.repository.common.DataStoreManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -59,5 +66,31 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
 
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.logout -> {
+                logout()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun logout() {
+        CoroutineScope(Dispatchers.IO).launch {
+            dataStoreManager.removeApiKey()
+        }
+        val request = NavDeepLinkRequest.Builder
+            .fromUri("android-app://com.red.sampleapp/auth".toUri())
+            .build()
+        navController.currentDestination?.id?.let { navController.popBackStack(it, true) };
+        navController.navigate(request)
     }
 }

@@ -8,5 +8,7 @@
         android:id="@+id/authScreen"
         android:name="com.red.sampleapp.auth.AuthFragment"
         android:label="@string/title_auth"
-        tools:layout="@layout/fragment_auth" />
+        tools:layout="@layout/fragment_auth">
+        <deepLink app:uri="android-app://com.red.sampleapp/auth" />
+    </fragment>
 </navigation>

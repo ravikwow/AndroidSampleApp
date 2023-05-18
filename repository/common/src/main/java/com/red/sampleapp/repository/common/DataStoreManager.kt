@@ -53,6 +53,13 @@ class DataStoreManager @Inject constructor(@ApplicationContext appContext: Conte
     }
 
     @Suppress("MemberVisibilityCanBePrivate", "unused")
+    suspend fun <T> removeValue(key: Preferences.Key<T>) {
+        dataStore.edit {
+            it.remove(key)
+        }
+    }
+
+    @Suppress("MemberVisibilityCanBePrivate", "unused")
     suspend fun <T> readValue(key: Preferences.Key<T>, responseFunc: T.() -> T) {
         dataStore.getFromLocalStorage(key) {
             responseFunc.invoke(this)
@@ -71,5 +78,9 @@ class DataStoreManager @Inject constructor(@ApplicationContext appContext: Conte
 
     fun checkApiKey(): Boolean {
         return !TextUtils.isEmpty(getApiKey())
+    }
+
+    suspend fun removeApiKey() {
+        removeValue(stringPreferencesKey("apiKey"))
     }
 }
