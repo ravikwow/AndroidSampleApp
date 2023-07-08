@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.runBlocking
 import java.io.IOException
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -70,13 +69,11 @@ class DataStoreManager @Inject constructor(@ApplicationContext appContext: Conte
         storeValue(stringPreferencesKey("apiKey"), apiKey)
     }
 
-    fun getApiKey(): String {
-        return runBlocking {
-            dataStore.getFromLocalStorage(stringPreferencesKey("apiKey")).first() ?: ""
-        }
+    suspend fun getApiKey(): String {
+        return dataStore.getFromLocalStorage(stringPreferencesKey("apiKey")).first() ?: ""
     }
 
-    fun checkApiKey(): Boolean {
+    suspend fun checkApiKey(): Boolean {
         return !TextUtils.isEmpty(getApiKey())
     }
 

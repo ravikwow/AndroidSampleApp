@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import androidx.core.net.toUri
+import androidx.activity.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.NavDeepLinkRequest
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -14,20 +13,14 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.red.base.ui.activity.ViewBindingActivity
 import com.red.sampleapp.databinding.ActivityMainBinding
-import com.red.sampleapp.repository.common.DataStoreManager
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
+    private val vm by viewModels<MainVM>()
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
 
-    @Inject
-    lateinit var dataStoreManager: DataStoreManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,14 +28,7 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
             .findFragmentById(R.id.nav_host_container) as NavHostFragment
         navController = navHostFragment.navController
 
-        val inflater = navHostFragment.navController.navInflater
-        val graph = inflater.inflate(R.navigation.nav_graph)
-        if (dataStoreManager.checkApiKey()) {
-            graph.setStartDestination(com.red.sampleapp.feature.random.R.id.random)
-        } else {
-            graph.setStartDestination(com.red.sampleapp.auth.R.id.auth)
-        }
-        navController.setGraph(graph, null)
+        vm.startFragment(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == com.red.sampleapp.auth.R.id.authScreen) {
@@ -76,21 +62,10 @@ class MainActivity : ViewBindingActivity<ActivityMainBinding>() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.logout -> {
-                logout()
+                vm.logout(navController)
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun logout() {
-        CoroutineScope(Dispatchers.IO).launch {
-            dataStoreManager.removeApiKey()
-        }
-        val request = NavDeepLinkRequest.Builder
-            .fromUri("android-app://com.red.sampleapp/auth".toUri())
-            .build()
-        navController.currentDestination?.id?.let { navController.popBackStack(it, true) };
-        navController.navigate(request)
     }
 }

@@ -1,6 +1,7 @@
 package com.red.sampleapp.repository.common
 
 import android.text.TextUtils
+import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Request
 import okhttp3.Response
@@ -9,7 +10,7 @@ class ApiKeyInterceptor(private val dataStoreManager: DataStoreManager) : Interc
     override fun intercept(chain: Interceptor.Chain): Response {
         val original: Request = chain.request()
         return if (TextUtils.isEmpty(original.header("X-API-Key"))) {
-            val apiKey = dataStoreManager.getApiKey()
+            val apiKey = runBlocking { dataStoreManager.getApiKey() }
             if (TextUtils.isEmpty(apiKey)) {
                 chain.proceed(original)
             } else {

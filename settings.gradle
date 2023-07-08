@@ -14,6 +14,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "SampleApp"
 include ':app'
+include ':app:domain'
 include ':base:ui:fragment'
 include ':base:ui:activity'
 include ':feature:aboutmovie'

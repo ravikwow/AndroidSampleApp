@@ -1,0 +1,44 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+}
+
+def cfg = rootProject.ext
+def libs = rootProject.ext.libs
+
+android {
+    namespace 'com.red.sampleapp.domain'
+    compileSdk cfg.targetSdkVersion
+
+    defaultConfig {
+        minSdk cfg.minSdkVersion
+        targetSdk cfg.targetSdkVersion
+
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility cfg.sourceCompatibility
+        targetCompatibility cfg.targetCompatibility
+    }
+    kotlinOptions {
+        jvmTarget = cfg.jvmTarget
+    }
+}
+
+dependencies {
+    implementation project(':repository:common')
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$libs.coroutine"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$libs.coroutine"
+    implementation "com.google.dagger:hilt-android:$libs.hilt"
+    kapt "com.google.dagger:hilt-compiler:$libs.hilt"
+    implementation "androidx.paging:paging-runtime:3.1.1"
+}
