@@ -3,7 +3,7 @@ package com.red.sampleapp.feature.popular.repository
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.red.sampleapp.domain.models.MovieModel
+import com.red.sampleapp.feature.popular.domain.models.MovieModel
 import com.red.sampleapp.repository.common.FilmsApi
 import com.red.sampleapp.repository.common.dto.Film
 import com.red.sampleapp.repository.common.dto.FilmsResponse

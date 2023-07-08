@@ -38,7 +38,7 @@ android {
 
 dependencies {
     implementation project(':base:ui:fragment')
-    implementation project(':domain')
+    implementation project(':feature:popular:domain')
     implementation project(':feature:popular:repository')
     implementation "androidx.core:core-ktx:$libs.corektx"
     implementation "androidx.appcompat:appcompat:$libs.appcompat"

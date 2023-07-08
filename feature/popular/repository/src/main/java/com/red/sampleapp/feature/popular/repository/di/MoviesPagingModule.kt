@@ -1,7 +1,7 @@
 package com.red.sampleapp.feature.popular.repository.di
 
 import com.red.sampleapp.repository.common.di.FilmsModule
-import com.red.sampleapp.domain.repository.MoviesPopularRepository
+import com.red.sampleapp.feature.popular.domain.repository.MoviesPopularRepository
 import com.red.sampleapp.feature.popular.repository.MoviesPopularRepositoryImpl
 import dagger.Binds
 import dagger.Module

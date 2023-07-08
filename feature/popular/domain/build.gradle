@@ -9,6 +9,7 @@ def cfg = rootProject.ext
 def libs = rootProject.ext.libs
 
 android {
+    namespace 'com.red.sampleapp.feature.popular.domain'
     compileSdk cfg.targetSdkVersion
 
     defaultConfig {

@@ -1,4 +1,4 @@
-package com.red.sampleapp.domain.models
+package com.red.sampleapp.feature.popular.domain.models
 
 data class MovieModel(
     val id: Long,

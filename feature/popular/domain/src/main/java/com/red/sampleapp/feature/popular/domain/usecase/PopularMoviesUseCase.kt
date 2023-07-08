@@ -1,8 +1,8 @@
-package com.red.sampleapp.domain.usecase
+package com.red.sampleapp.feature.popular.domain.usecase
 
 import androidx.paging.PagingData
-import com.red.sampleapp.domain.models.MovieModel
-import com.red.sampleapp.domain.repository.MoviesPopularRepository
+import com.red.sampleapp.feature.popular.domain.models.MovieModel
+import com.red.sampleapp.feature.popular.domain.repository.MoviesPopularRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
